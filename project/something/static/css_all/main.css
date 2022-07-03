@@ -1,0 +1,55 @@
+.main{
+    margin: 1% auto;
+    margin-left: 2%;
+}
+
+.model{
+    margin 10%;
+}
+
+.about{
+   float: center
+   margin-top: 5px;
+}
+
+.bt{
+    width: 122px
+}
+
+.inp{
+    width: 250px
+}
+
+.table{
+    padding: 10px;
+}
+
+.table1{
+    width: 445px
+}
+.first{
+    width: 100px
+}
+
+.second{
+    width: 100px
+}
+.third{
+    width: 100px
+}
+.fourth{
+    width: 100px
+}
+
+.main_table{
+    border: 1px solid black;
+}
+
+th{
+    border-bottom: 2px solid black;
+    border: 1px solid black;
+}
+
+td{
+    border: 1px solid black;
+}
