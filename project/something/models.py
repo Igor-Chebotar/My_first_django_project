@@ -4,7 +4,11 @@ from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from hashlib import md5
 
-
+# класс ссылки,в котором записаны:
+# имя полной ссылки
+# имя объекта
+# автор объекта
+# хэш, для создания короткой ссылки
 class URL(models.Model):
     full_url = models.URLField(verbose_name='Имя ссылки')
     short_name = models.CharField(max_length=50, verbose_name='Краткое имя', unique=True)
@@ -29,7 +33,3 @@ class URL(models.Model):
     class Meta:
         verbose_name = 'Ссылка'
         verbose_name_plural = 'Ссылки'
-
-
-
-#

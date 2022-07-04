@@ -8,13 +8,13 @@ from django.views.generic import TemplateView, FormView, CreateView, UpdateView
 
 from .models import URL
 
-
+# функция, которая перенаправляет пользователя на изначальную ссылку, используя Хэщ
 def root(request, url_hash):
     url = get_object_or_404(URL, url_hash=url_hash)
 
     return redirect(url.full_url)
 
-
+# функция удаления ссылки
 def delete(request, id):
     try:
         person = URL.objects.get(id=id)
@@ -23,7 +23,7 @@ def delete(request, id):
     except URL.DoesNotExist:
         return HttpResponseNotFound("<h2>Person not found</h2>")
 
-
+#
 class MainView(TemplateView):
     template_name = 'urls_main.html'
 
@@ -35,7 +35,7 @@ class MainView(TemplateView):
         else:
             return render(request, self.template_name, {})
 
-
+# Класс для входа
 class LoginView(FormView):
     form_class = AuthenticationForm
     success_url = '/urls/'
@@ -49,13 +49,14 @@ class LoginView(FormView):
     def form_invalid(self, form):
         return super(LoginView, self).form_invalid(form)
 
-
+# Класс для выхода
 class Logout(View):
     def get(self, request):
         logout(request)
         return redirect('/urls/')
 
 
+# класс для создания и добавления ссылок
 class AddURLView(CreateView):
     fields = ['full_url', 'short_name']
     model = URL
@@ -69,7 +70,7 @@ class AddURLView(CreateView):
 
         return redirect(self.success_url)
 
-
+# класс для редактирования ссылок
 class EditURLView(UpdateView):
     fields = ['full_url', 'short_name']
     model = URL
@@ -80,7 +81,7 @@ class EditURLView(UpdateView):
         obj = URL.objects.get(id=self.kwargs['pk'])
         return obj
 
-
+# Класс для регистрации
 class SignUp(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy("login")
