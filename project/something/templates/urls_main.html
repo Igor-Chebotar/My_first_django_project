@@ -29,11 +29,11 @@
             {% for item in urls%}
             <tr>
                 <td class="table first"><center>{{item.short_name}}</center></td>
-                <td class="table second"><input class="inp" id="url_hash" value="http://localhost:8000/{{item.url_hash}}" readonly></td>
+                <td class="table second"><input class="inp" id="url_hash_{{item.id}}" value="http://localhost:8000/{{item.url_hash}}" readonly></td>
 
                 <td class="table table1">
                     <div class="row">
-                    <div class="about col-4"><button onclick="CopyURL()" type="button" id="copy_btn" class="btn btn-outline-success bt">Скопировать</button></div>
+                    <div class="about col-4"><button onclick="CopyURL({{item.id}})" type="button" id="button_{{item.id}}" class="btn btn-outline-success bt">Скопировать</button></div>
                     <div class="about col-4"><a href="edit_url/{{item.id}}"><button class="btn btn-outline-primary bt">Изменить</button></a></div>
                         <div class="about col-4"><a href="delete_url/{{item.id}}"><button class="btn btn-outline-danger bt">Удалить</button></a></div>
 
